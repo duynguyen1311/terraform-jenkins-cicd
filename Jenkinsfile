@@ -13,12 +13,12 @@ pipeline {
   stages {
     stage('Init Provider') {
       steps {
-        sh 'terraform init'
+        bat 'terraform init'
       }
     }
     stage('Plan Resources') {
       steps {
-        sh 'terraform plan'
+        bat 'terraform plan'
       }
     }
     stage('Apply Resources') {
@@ -26,7 +26,7 @@ pipeline {
         message "Do you want to proceed for production deployment?"
       }
       steps {
-        sh 'terraform apply -auto-approve'
+        bat 'terraform apply -auto-approve'
       }
     }
     stage('Destroy Resources') {
@@ -34,7 +34,7 @@ pipeline {
         message "Do you want to destroy the infrastructure?"
       }
       steps {
-        sh 'terraform destroy -auto-approve'
+        bat 'terraform destroy -auto-approve'
       }
     }
   }
